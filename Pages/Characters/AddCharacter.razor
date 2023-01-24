@@ -1,0 +1,26 @@
+﻿@using DnDStock.Data
+
+<div class="card my-2">
+
+    <div class="card-body">
+        <EditForm Model="@(_character)"
+                  OnValidSubmit="@(() => HandleSubmit())">
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="my-1">
+                <label class="form-label">Nombre</label>
+                <InputText class="form-control" @bind-Value="_character.Name" />
+            </div>
+
+            <div class="my-1">
+                <label class="form-label">Nivel</label>
+                <InputNumber class="form-control" @bind-Value="_character.Level" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm mt-2">Crear personaje</button>
+        </EditForm>
+    </div>
+
+</div>
+

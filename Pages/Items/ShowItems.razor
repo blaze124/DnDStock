@@ -1,0 +1,44 @@
+﻿@page "/showitems"
+
+@using DnDStock.Data
+@using DnDStock.Pages.Components
+
+<h3>Objetos</h3>
+
+<button class="btn btn-success my-3" @onclick="@(() => ShowFormSection())">Añadir objeto</button>
+
+<div hidden="@_hiddenForm" class="my-1">
+    <AddItem OnItemCreated="ItemCreated" />
+</div>
+
+@if (_items.Count == 0 && _equipment.Count == 0)
+{
+    <p>No hay objetos registrados.</p>
+}
+else
+{
+    @if (_items.Count > 0)
+    {
+        <div class="my-3">
+            <h4>Objetos consumibles</h4>
+
+            @foreach (Item i in _items)
+            {
+                <ItemListComponent MyItem="@i" OnItemDeleted="ItemDeleted" />
+            }
+        </div>
+    }
+
+    @if (_equipment.Count > 0)
+    {
+        <div class="my-1">
+            <h4>Equipo</h4>
+
+            @foreach (Item i in _equipment)
+            {
+                <ItemListComponent MyItem="@i" OnItemDeleted="ItemDeleted" />
+            }
+        </div>
+    }
+
+}

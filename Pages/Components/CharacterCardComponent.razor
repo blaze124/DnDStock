@@ -1,0 +1,25 @@
+﻿<div class="card d-flex my-2">
+
+    <div class="card-header">
+        <h3 class="card-title">@(MyCharacter.Name)</h3>
+        <p class="card-text">@($"Nivel {MyCharacter.Level}")</p>
+    </div>
+
+    <div class="card-body d-flex justify-content-between">
+        <span>
+
+            <button type="button" class="btn btn-outline-primary flex-row" @*@onclick="@()" *@>
+                Ver bolsa
+            </button>
+            <button type="button" class="btn btn-outline-warning flex-row" @onclick="@(() => LevelUp())" >
+                Subir nivel
+            </button>
+            
+        </span>
+        <span>
+            <button type="button" class="btn btn-outline-danger flex-row" @onclick="@(() => DeleteCharacter())">
+                Eliminar
+            </button>
+        </span>
+    </div>
+</div>

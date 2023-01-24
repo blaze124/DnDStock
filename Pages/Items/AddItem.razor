@@ -1,0 +1,24 @@
+﻿@using DnDStock.Data
+
+<div class="card my-2">
+    <div class="card-body">
+        <EditForm Model="@(_item)"
+                  OnValidSubmit="@(() => HandleSubmit())">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="my-1">
+                <label class="form-label">Nombre</label>
+                <InputText class="form-control" @bind-Value="_item.Name" />
+            </div>
+
+            <span class="my-1">
+                <label class="form-label">Equipable</label>
+                <InputCheckbox class="form-check" @bind-Value="_item.IsEquipment" />
+            </span>
+
+            <button type="submit" class="btn btn-primary btn-sm mt-2">Crear objeto</button>
+
+        </EditForm>
+    </div>
+</div>

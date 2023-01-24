@@ -1,0 +1,29 @@
+﻿@page "/"
+
+@using DnDStock.Pages.Components
+@using DnDStock.Pages.Characters
+@using DnDStock.Data
+
+<h1>Inventario D&d</h1>
+
+Seleccione su personaje:
+
+<br />
+
+<button class="btn btn-success my-3" type="button" @onclick="@(() => ShowAddCharacterForm())">Añadir personaje</button>
+
+<div hidden="@(_hideForm)">
+    <AddCharacter OnCharacterCreated="CharacterCreated"/>
+</div>
+
+@if (_characterList.Count == 0)
+{
+    <p>No hay personajes creados.</p>
+}
+else
+{
+    foreach (Character c in _characterList)
+    {
+        <CharacterCardComponent MyCharacter="@(c)" OnCharacterDeleted="CharacterDeleted" />
+    }
+}
